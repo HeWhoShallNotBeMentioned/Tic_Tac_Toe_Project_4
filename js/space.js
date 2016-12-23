@@ -10,9 +10,18 @@ var Space = function(position, dom, doTurn) {
 };
   Space.prototype.setContent = function(content) {
     var activePlayerSymbol = this.doTurn();
-console.log("inside Space.setContent");
+
     if (!this.symbol) {
       this.symbol = activePlayerSymbol;
-      this.dom.innerHTML = this.symbol;
+      if(this.symbol == "X") {
+        var dId = this.dom.id;
+        document.getElementById(dId).classList.add("box-filled-2");
+      } else {
+        var dId2 = this.dom.id;
+        document.getElementById(dId2).classList.add("box-filled-1");
+      }
     }
   };
+
+  // var d = document.getElementById("div1");
+  // d.className += " otherclass";

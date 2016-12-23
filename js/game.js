@@ -3,12 +3,19 @@ this.playerOne = playerOne;
 this.playerTwo = playerTwo;
 this.currentPlayer = playerTwo;
 this.spaces = [];
+document.getElementsByClassName("players")[1].classList.add("active");
 
  var game = this;
  var doTurn = function() {
    if (game.currentPlayer == playerOne ) {
+     document.getElementsByClassName("players")[1].classList.add("active");
+     document.getElementsByClassName("players")[0].classList.remove("active");
+
      game.currentPlayer = playerTwo;
    } else {
+     document.getElementsByClassName("players")[0].classList.add("active");
+     document.getElementsByClassName("players")[1].classList.remove("active");
+     
      game.currentPlayer = playerOne;
    }
    return game.currentPlayer.symbol;
