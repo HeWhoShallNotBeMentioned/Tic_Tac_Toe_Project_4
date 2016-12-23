@@ -1,12 +1,16 @@
 var Game = function(playerOne, playerTwo) {
 this.playerOne = playerOne;
 this.playerTwo = playerTwo;
-this.currentPlayer = playerOne;
+this.currentPlayer = playerTwo;
 this.spaces = [];
 
  var game = this;
  var doTurn = function() {
-   console.log(game.currentPlayer.symbol);
+   if (game.currentPlayer == playerOne ) {
+     game.currentPlayer = playerTwo;
+   } else {
+     game.currentPlayer = playerOne;
+   }
    return game.currentPlayer.symbol;
 
 };
