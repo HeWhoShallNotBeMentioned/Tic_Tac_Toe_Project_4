@@ -1,8 +1,9 @@
-var Space = function(position, dom, doTurn) {
+var Space = function(position, dom, doTurn, win) {
     this.position = position;
     this.dom = dom;
     this.symbol = '';
     this.doTurn = doTurn;
+    this.win = win;
     var space = this;
     this.dom.addEventListener('click', function(event) {
         space.setContent('X');
@@ -10,7 +11,7 @@ var Space = function(position, dom, doTurn) {
 };
   Space.prototype.setContent = function(content) {
     var activePlayerSymbol = this.doTurn();
-
+    var checkWin = this.win();
     if (!this.symbol) {
       this.symbol = activePlayerSymbol;
       if(this.symbol == "X") {
@@ -22,6 +23,3 @@ var Space = function(position, dom, doTurn) {
       }
     }
   };
-
-  // var d = document.getElementById("div1");
-  // d.className += " otherclass";
