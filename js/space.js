@@ -16,6 +16,7 @@ var Space = function(position, dom, doTurn, win) {
       this.symbol = activePlayerSymbol;
       if(this.symbol == "X") {
         var dId = this.dom.id;
+        console.log("this.dom.id:" + dId);
         document.getElementById(dId).classList.add("box-filled-2");
       } else {
         var dId2 = this.dom.id;
