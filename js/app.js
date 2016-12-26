@@ -6,6 +6,6 @@
   var player2 = new Player('Spock', 'O');
   var game = new Game(player1, player2);
 
+
   game.newGame();
-  //debugger;
  }());

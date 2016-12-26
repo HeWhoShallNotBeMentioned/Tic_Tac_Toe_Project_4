@@ -1,0 +1,32 @@
+win = function() {
+console.log("Inside win");
+console.log("symbol win:  ", this.symbol);
+
+ var winningCombos = [[0, 1, 2], [3, 4, 5,], [6, 7, 8], [0, 3, 6], [1, 4 ,7], [2, 5, 8], [0, 4, 8], [2, 4, 6]],
+     gameStatus =  false;
+
+   boardArray = boardArray.splice(this.position,1,this.symbol);
+   console.log("boardArray:  ", boardArray);
+
+ currentBoard = document.getElementsByClassName("box");
+
+ for (var prop in currentBoard) {
+   console.log(prop);
+
+ }
+ var currentBoardChildNodes = currentBoard.childNodes;
+ console.log("board child nodes:  ",currentBoardChildNodes);
+
+ winningCombos.forEach(function(combo) {
+   for (var i = 0; i <3; i++) {
+     //result[i] = (spaces).includes(combo[i]); //gets results for each winning combination
+   }
+   // if ((result[0] === true) && (result[1] === true) && (result[2] === true)) {
+   //    gameStatus = "current player wins"; //
+   //    console.log("current player", currentPlayer);
+   // }
+});
+console.log("current player", game.currentPlayer[symbol]);
+console.log("gameStatus: ", gameStatus);
+return gameStatus;
+};
