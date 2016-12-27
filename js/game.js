@@ -63,7 +63,9 @@ Game.prototype.newGame = function () {
   //Hides the board to start the game
   var hideBoard = document.getElementById('board');
   hideBoard.style.display = 'none';
-
+  //Hides the finish text block to start the game
+  var hideFinish = document.getElementById('finish');
+  hideFinish.style.display = 'none';
 };
 
 
