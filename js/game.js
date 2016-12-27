@@ -45,10 +45,39 @@ var win = function() {
     }
     if ((result[0] === true) && (result[1] === true) && (result[2] === true)) {
        console.log("current player wins:  ", game.currentPlayer.symbol);
-       //console.log("current player", currentPlayer);
+       if (game.currentPlayer.symbol == "X") {
+         var hideBoard = document.getElementById('board');
+         hideBoard.style.display = 'none';
+         var showFinish = document.getElementById('finish');
+         showFinish.style.display = 'block';
+         // bring up the winner x page and hide the board
+          document.getElementsByClassName("screen-win")[0].classList.add("screen-win-two");
+
+         return;
+       } else if (game.currentPlayer.symbol == "O") {
+         // bring up the winner xopage and hide the board
+         var hideBoard1 = document.getElementById('board');
+         hideBoard1.style.display = 'none';
+         var showFinish1 = document.getElementById('finish');
+         showFinish1.style.display = 'block';
+         // bring up the winner x page and hide the board
+          document.getElementsByClassName("screen-win")[0].classList.add("screen-win-one");
+         return;
+       }
+    }
+    if (!boardArray.includes(-1)){
+      //bring up the tie screen and hide the board
+      var hideBoard2 = document.getElementById('board');
+      hideBoard2.style.display = 'none';
+      var showFinish2 = document.getElementById('finish');
+      showFinish2.style.display = 'block';
+      // bring up the winner x page and hide the board
+      document.getElementsByClassName("screen-win")[0].classList.add("screen-win-tie");
+      return;
     }
   });
 
+//Activite new name button.
 
 };
 
