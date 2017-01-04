@@ -25,26 +25,26 @@ var win = function() {
   var result = [];
   var curPlayBoxes = [];
   var winningCombos = [[0, 1, 2], [3, 4, 5,], [6, 7, 8], [0, 3, 6], [1, 4 ,7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
-  console.log("inside win");
-  console.log("this.position:   ", this.position);
-  console.log("this.symbol:  ", this.symbol);
-  console.log("boardArray:  ", boardArray);
+  // console.log("inside win");
+  // console.log("this.position:   ", this.position);
+  // console.log("this.symbol:  ", this.symbol);
+  // console.log("boardArray:  ", boardArray);
 
   boardArray.splice(this.position,1,this.symbol);
-  console.log("boardArray:  ", boardArray);
+  // console.log("boardArray:  ", boardArray);
 
   for (var i = 0; i < boardArray.length; i++) {
     if (this.symbol == boardArray[i]) {
       curPlayBoxes.push(i);
     }
   }
-  console.log("Current Player Boxes:  ", curPlayBoxes);
+  // console.log("Current Player Boxes:  ", curPlayBoxes);
   winningCombos.forEach(function(combo) {
     for (var i = 0; i <3; i++) {
       result[i] = (curPlayBoxes).includes(combo[i]); //gets results for each winning combination
     }
     if ((result[0] === true) && (result[1] === true) && (result[2] === true)) {
-       console.log("current player wins:  ", game.currentPlayer.symbol);
+      //  console.log("current player wins:  ", game.currentPlayer.symbol);
        if (game.currentPlayer.symbol == "X") {
          var hideBoard = document.getElementById('board');
          hideBoard.style.display = 'none';
@@ -53,7 +53,7 @@ var win = function() {
          // bring up the winner x page and hide the board
           document.getElementsByClassName("screen-win")[0].classList.add("screen-win-two");
 
-         return;
+         game.resetBoard();
        } else if (game.currentPlayer.symbol == "O") {
          // bring up the winner xopage and hide the board
          var hideBoard1 = document.getElementById('board');
@@ -62,7 +62,7 @@ var win = function() {
          showFinish1.style.display = 'block';
          // bring up the winner x page and hide the board
           document.getElementsByClassName("screen-win")[0].classList.add("screen-win-one");
-         return;
+          game.resetBoard();
        }
     }
     if (!boardArray.includes(-1)){
@@ -73,12 +73,19 @@ var win = function() {
       showFinish2.style.display = 'block';
       // bring up the winner x page and hide the board
       document.getElementsByClassName("screen-win")[0].classList.add("screen-win-tie");
-      return;
+      game.resetBoard();
     }
-  });
 
-//Activite new name button.
 
+  function resetBoard() {
+    boardArray = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
+    this.currentPlayer = playerTwo;
+    var hideBoard = document.getElementById('board');
+    hideBoard.style.display = 'none';
+    var hideFinish = document.getElementById('finish');
+    hideFinish.style.display = 'none';
+  }
+});
 };
 
  for(var i = 0; i < 9; i++){
