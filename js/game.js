@@ -1,11 +1,11 @@
-var Game = function(playerOne, playerTwo, boardArray1) {
+var Game = function(playerOne, playerTwo) {
 this.playerOne = playerOne;
 this.playerTwo = playerTwo;
 this.currentPlayer = playerTwo;
 this.spaces = [];
 
 document.getElementsByClassName("players")[1].classList.add("active");
-  var boardArray = boardArray1;
+  var boardArray = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
   var symbol = this.symbol;
  var game = this;
  var doTurn = function() {
