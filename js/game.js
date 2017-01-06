@@ -1,11 +1,11 @@
-var Game = function(playerOne, playerTwo) {
+var Game = function(playerOne, playerTwo, boardArray1) {
 this.playerOne = playerOne;
 this.playerTwo = playerTwo;
 this.currentPlayer = playerTwo;
 this.spaces = [];
 
 document.getElementsByClassName("players")[1].classList.add("active");
-  var boardArray = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
+  var boardArray = boardArray1;
   var symbol = this.symbol;
  var game = this;
  var doTurn = function() {
@@ -25,13 +25,11 @@ var win = function() {
   var result = [];
   var curPlayBoxes = [];
   var winningCombos = [[0, 1, 2], [3, 4, 5,], [6, 7, 8], [0, 3, 6], [1, 4 ,7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
-  // console.log("inside win");
-  // console.log("this.position:   ", this.position);
-  // console.log("this.symbol:  ", this.symbol);
-  // console.log("boardArray:  ", boardArray);
 
   boardArray.splice(this.position,1,this.symbol);
-  // console.log("boardArray:  ", boardArray);
+  console.log("boardArray:  ", boardArray);
+  console.log("result:  ", result);
+  console.log("curPlayBoxes:  ", curPlayBoxes);
 
   for (var i = 0; i < boardArray.length; i++) {
     if (this.symbol == boardArray[i]) {
@@ -53,7 +51,7 @@ var win = function() {
          // bring up the winner x page and hide the board
           document.getElementsByClassName("screen-win")[0].classList.add("screen-win-two");
 
-         game.resetBoard();
+
        } else if (game.currentPlayer.symbol == "O") {
          // bring up the winner xopage and hide the board
          var hideBoard1 = document.getElementById('board');
@@ -62,7 +60,7 @@ var win = function() {
          showFinish1.style.display = 'block';
          // bring up the winner x page and hide the board
           document.getElementsByClassName("screen-win")[0].classList.add("screen-win-one");
-          game.resetBoard();
+
        }
     }
     if (!boardArray.includes(-1)){
@@ -73,18 +71,9 @@ var win = function() {
       showFinish2.style.display = 'block';
       // bring up the winner x page and hide the board
       document.getElementsByClassName("screen-win")[0].classList.add("screen-win-tie");
-      game.resetBoard();
+
     }
 
-
-  function resetBoard() {
-    boardArray = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
-    this.currentPlayer = playerTwo;
-    var hideBoard = document.getElementById('board');
-    hideBoard.style.display = 'none';
-    var hideFinish = document.getElementById('finish');
-    hideFinish.style.display = 'none';
-  }
 });
 };
 
@@ -104,7 +93,32 @@ Game.prototype.newGame = function () {
   hideFinish.style.display = 'none';
 };
 
+var clickNewGameButton = document.getElementById('finish-button');
+clickNewGameButton.addEventListener("click", function(){
+  var player1 = new Player('Chewbacca', 'X');
+  var player2 = new Player('Spock', 'O');
+  var game = new Game(player1, player2);
+  var boardArray = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
+  game.newGame();
+  //console.log("inside clickNewGameButton");
 
+
+  var hideBoard = document.getElementById('board');
+  hideBoard.style.display = 'block';
+  var hideFinish = document.getElementById('finish');
+  hideFinish.style.display = 'none';
+  var deactiveO = document.getElementById("player1");
+  deactiveO.classList.remove("active");
+  var activateX = document.getElementById("player2");
+  activateX.classList.add("active");
+
+  for(var i = 0; i < 9; i++){
+    var dom = document.getElementById('box-' + i);
+      //console.log("inside", dom);
+      dom.classList.remove("box-filled-2", "box-filled-1");
+  }
+  return boardArray;
+});
 
 //When start button is clicked, the board is shown and the start screen is hidden.
 var clickStartButton = document.getElementById('start-button');
