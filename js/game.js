@@ -51,7 +51,7 @@ var win = function() {
          showFinish.style.display = 'block';
          // bring up the winner x page and hide the board
           document.getElementsByClassName("screen-win")[0].classList.add("screen-win-two");
-          document.getElementById("message").innerHTML = "Player 2";
+          document.getElementById("message").innerHTML = "Winner";
 
        } else if (game.currentPlayer.symbol == "O") {
          // bring up the winner xopage and hide the board
@@ -61,7 +61,7 @@ var win = function() {
          showFinish1.style.display = 'block';
          // bring up the winner x page and hide the board
           document.getElementsByClassName("screen-win")[0].classList.add("screen-win-one");
-          document.getElementById("message").innerHTML = "Player 1";
+          document.getElementById("message").innerHTML = "Winner";
        }
     }
     if (!boardArray.includes(-1)){
@@ -72,10 +72,9 @@ var win = function() {
       showFinish2.style.display = 'block';
       // bring up the winner x page and hide the board
       document.getElementsByClassName("screen-win")[0].classList.add("screen-win-tie");
-
+      document.getElementById("message").innerHTML = "It's a tie!";
     }
-
-});
+  });
 };
 
  for(var i = 0; i < 9; i++){
