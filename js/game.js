@@ -27,9 +27,9 @@ var win = function() {
   var winningCombos = [[0, 1, 2], [3, 4, 5,], [6, 7, 8], [0, 3, 6], [1, 4 ,7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
 
   boardArray.splice(this.position,1,this.symbol);
-  console.log("boardArray:  ", boardArray);
-  console.log("result:  ", result);
-  console.log("curPlayBoxes:  ", curPlayBoxes);
+  console.log("inside win function boardArray:  ", boardArray);
+  //console.log("result:  ", result);
+  //console.log("curPlayBoxes:  ", curPlayBoxes);
 
   for (var i = 0; i < boardArray.length; i++) {
     if (this.symbol == boardArray[i]) {
@@ -42,6 +42,7 @@ var win = function() {
       result[i] = (curPlayBoxes).includes(combo[i]); //gets results for each winning combination
     }
     if ((result[0] === true) && (result[1] === true) && (result[2] === true)) {
+
       //  console.log("current player wins:  ", game.currentPlayer.symbol);
        if (game.currentPlayer.symbol == "X") {
          var hideBoard = document.getElementById('board');
@@ -50,7 +51,7 @@ var win = function() {
          showFinish.style.display = 'block';
          // bring up the winner x page and hide the board
           document.getElementsByClassName("screen-win")[0].classList.add("screen-win-two");
-
+          document.getElementById("message").innerHTML = "Player 2";
 
        } else if (game.currentPlayer.symbol == "O") {
          // bring up the winner xopage and hide the board
@@ -60,7 +61,7 @@ var win = function() {
          showFinish1.style.display = 'block';
          // bring up the winner x page and hide the board
           document.getElementsByClassName("screen-win")[0].classList.add("screen-win-one");
-
+          document.getElementById("message").innerHTML = "Player 1";
        }
     }
     if (!boardArray.includes(-1)){
@@ -98,8 +99,8 @@ clickNewGameButton.addEventListener("click", function(){
   var player1 = new Player('Chewbacca', 'X');
   var player2 = new Player('Spock', 'O');
   var game = new Game(player1, player2);
-  var boardArray = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
-  game.newGame();
+      boardArray = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
+  //game.newGame();
   //console.log("inside clickNewGameButton");
 
 
