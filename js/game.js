@@ -99,6 +99,11 @@ clickNewGameButton.addEventListener("click", function(){
   var player2 = new Player('Spock', 'O');
   var game = new Game(player1, player2);
       boardArray = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
+
+      for(var i = 0; i < 9; i++){
+        var dom = document.getElementById('box-' + i);
+        this.spaces.push(new Space(i, dom, doTurn, win));
+      }
   //game.newGame();
   //console.log("inside clickNewGameButton");
 
